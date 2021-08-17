@@ -6,12 +6,12 @@
     VERSÃO: 1.01
     DATA: 17/08/2021
     ARQUIVOS ANEXO: BIBLIOTECA DS3231 ALTERADA PARA EXIBIR AS DATAS EM PORTUGUÊS-BR 
-                   SKETCH DO PROGRAMA PARA EXIBIÇÃO DA DATA E HORÁRIO UTILIZANDO DISPLAY TFT LCD 2.4"
+                    SKETCH DO PROGRAMA PARA EXIBIÇÃO DA DATA E HORÁRIO UTILIZANDO DISPLAY TFT LCD 2.4"
   
 -----------------------------------------------------------------------------------------------------------------------
   COMENTÁRIOS:     
 
-  - DEMONSTRAÇÃO DAS FUNÇÕES DE EXIBIÇÃO DE DATA EM PORTUGUÊS E HORÁRIO DO MÓDULO DS3231.
+  - DEMONSTRAÇÃO DAS FUNÇÕES DE EXIBIÇÃO DE DATA EM PORTUGUÊS-Br E HORÁRIO DO MÓDULO DS3231.
 
 -----------------------------------------------------------------------------------------------------------------------                  
   MATERIAL PARA O PROJETO:
@@ -45,8 +45,6 @@
 -----------------------------------------------------------------------------------------------------------------------                
 **********************************************************************************************************************/
 
-
-
 // ========================================================================================================
 // INCLUSÃO DAS BIBLIOTECAS QUE SERÃO UTILIZADAS NO PROJETO:
 #include <MCUFRIEND_kbv.h>  //BIBLIOTECA DO DISPLAY TFT LCD 2.4"
@@ -63,11 +61,10 @@ Time  t;  //DECLARAÇÃO DA VARIÁVEL t
 
 String data;
 String dataatual;
-
 String diadasemana;
 String diadasemanaatual = " ";
 
-unsigned long atualiza_lcd = 1000; 
+unsigned long atualiza_lcd; //variável auxiliar para atualizar o display
 
 // ========================================================================================================
 // DECLARAÇÃO DA FUNÇÃO QUE EXIBE A DATA E HORÁRIO NO DISPLAY:

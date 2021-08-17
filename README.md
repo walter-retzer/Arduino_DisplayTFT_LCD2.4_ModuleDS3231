@@ -1,2 +1,8 @@
 # Arduino_DisplayTFT_LCD2.4_ModuleDS3231
-Arquivo de Configuração para exibir a data em Português(PT-Br) utilizando o módulo DS3231, Arduino Mega e Display TFT LCD 2.4"
+Arquivo de Configuração para exibir a data em Português(PT-Br) utilizando o módulo DS3231, Arduino Mega e Display TFT LCD 2.4".
+
+    PROJETO: ARDUINO COM DISPLAY LCD TFT 2.4" E MÓDULO DS3231      
+    VERSÃO: 1.01
+    DATA: 17/08/2021
+    ARQUIVOS ANEXO: BIBLIOTECA DS3231 ALTERADA PARA EXIBIR AS DATAS EM PORTUGUÊS-BR 
+                    SKETCH DO PROGRAMA PARA EXIBIÇÃO DA DATA E HORÁRIO UTILIZANDO DISPLAY TFT LCD 2.4".

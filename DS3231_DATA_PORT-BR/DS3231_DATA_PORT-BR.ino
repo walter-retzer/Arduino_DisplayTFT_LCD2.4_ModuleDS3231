@@ -3,8 +3,8 @@
     AUTOR: WALTER DAWID RETZER
     
     PROJETO: DISPLAY LCD TFT 2.4" E MÓDULO DS3231      
-    VERSÃO: 1.00
-    DATA: 16/08/2021
+    VERSÃO: 1.01
+    DATA: 17/08/2021
     ARQUIVOS ANEXO: BIBLIOTECA DS3231 ALTERADA PARA EXIBIR AS DATAS EM PORTUGUÊS-BR 
                    SKETCH DO PROGRAMA PARA EXIBIÇÃO DA DATA E HORÁRIO UTILIZANDO DISPLAY TFT LCD 2.4"
   
@@ -140,11 +140,11 @@ void setup () {
 // CONFIGURAÇÃO PARA A GRAVAÇÃO DA DATA E HORA AO MÓDULO DS3231: 
 // APÓS O PRIMEIRO DOWNLOAD, DEVE-SE COMENTAR AS 3 LINHAS ABAIXO, ESSAS FUNÇÕES SÃO PARA CONFIGURAR A HORA ATUAL AO MÓDULO.
 // DEPOIS DE COMENTADAS ESSAS 3 LINHAS, DEVE-SE EXECUTAR NOVO DOWNLOAD AO ARDUINO, PARA ASSIM O MÓDULO EXECUTAR CORRETAMENTE
-
+/*
     rtc.setDOW(SEGUNDA);     // Setar o dia da Semana: DOMINGO / SEGUNDA / TERCA / QUARTA / QUINTA / SEXTA / SABADO
-    rtc.setTime(12,30,45);   // Setar o horário para: 14:00:00 (24hr formato)
+    rtc.setTime(23,45,00);   // Setar o horário para: 14:00:00 (24hr formato)
     rtc.setDate(16,8,2021);  // Setar a data para 20 de Julho de 2021
- 
+*/
     t = rtc.getTime(); 
   
     tft.setTextColor(YELLOW, BLACK);
@@ -193,11 +193,17 @@ void loop()
 
 void data_hora() {
 
+  String data1;
+  String data2;
+  String hora1;
+  String hora;
+
   t = rtc.getTime();
    
 // ========================================================================================================
 // EXIBIÇÃO DA DATA E HORÁRIO:
-  String hora = rtc.getTimeStr();
+
+  hora = rtc.getTimeStr();
   tft.setCursor(55, 40);
   tft.setTextColor(WHITE, RED);
   tft.setTextSize(3);
@@ -306,53 +312,54 @@ void data_hora() {
             tft.print(rtc.getDOWStr());
             diadasemanaatual = diadasemana;
       }
-            // ========================================================================================================
-            // EXIBIÇÃO DO MÊS:
-            
-            tft.setTextColor(WHITE, RED);
-            tft.setCursor(50,190);
-            tft.setTextSize(2);
-            tft.print(F("MES: "));
-            tft.print(rtc.getMonthStr());
-            
-            // ========================================================================================================
-            // EXIBIÇÃO DO MÊS ABREVIADO/ANOYYYY:
-            
-            tft.setTextColor(WHITE, RED);
-            tft.setCursor(80,240);
-            tft.setTextSize(2);
-            tft.print(rtc.getMonthStr(FORMAT_SHORT));
-            tft.print("/");
-            tft.print(t.year, DEC);  
-           
-            // ========================================================================================================
-            // EXIBIÇÃO DA DATA E HORÁRIO:
-            
-            tft.setTextColor(WHITE, RED);
-            tft.setCursor(8,290);
-            tft.setTextSize(2);
-            
-            // ========================================================================================================
-            // EXIBIÇÃO DA DATA DD/MM/YY:
-            
-            String data1 = rtc.getDateStr(FORMAT_SHORT, FORMAT_LITTLEENDIAN, divider);
-            tft.print(data1);
-
-            // ========================================================================================================
-            // EXIBIÇÃO DO DIA DA SEMANA ABREVIADO: 
-            
-            String data2 = rtc.getDOWStr(FORMAT_SHORT);
-            tft.setCursor(118,290);
-            tft.print(data2);
-
-            // ========================================================================================================
-            // EXIBIÇÃO DO HORÁRIO HH:MM 
-            
-            String hora1 = rtc.getTimeStr(FORMAT_SHORT);
-            tft.setCursor(163,290);
-            tft.print(hora1);
-            tft.print(F("h"));
       
-  }
+    }
+
+    // ========================================================================================================
+    // EXIBIÇÃO DO MÊS:
+    
+    tft.setTextColor(WHITE, RED);
+    tft.setCursor(50,190);
+    tft.setTextSize(2);
+    tft.print(F("MES: "));
+    tft.print(rtc.getMonthStr());
+    
+    // ========================================================================================================
+    // EXIBIÇÃO DO MÊS ABREVIADO/ANOYYYY:
+    
+    tft.setTextColor(WHITE, RED);
+    tft.setCursor(80,240);
+    tft.setTextSize(2);
+    tft.print(rtc.getMonthStr(FORMAT_SHORT));
+    tft.print("/");
+    tft.print(t.year, DEC);  
+   
+    // ========================================================================================================
+    // EXIBIÇÃO DA DATA E HORÁRIO:
+    
+    tft.setTextColor(WHITE, RED);
+    tft.setCursor(8,290);
+    tft.setTextSize(2);
+    
+    // ========================================================================================================
+    // EXIBIÇÃO DA DATA DD/MM/YY:
+    
+    data1 = rtc.getDateStr(FORMAT_SHORT, FORMAT_LITTLEENDIAN, divider);
+    tft.print(data1);
+
+    // ========================================================================================================
+    // EXIBIÇÃO DO DIA DA SEMANA ABREVIADO: 
+    
+    data2 = rtc.getDOWStr(FORMAT_SHORT);
+    tft.setCursor(118,290);
+    tft.print(data2);
+
+    // ========================================================================================================
+    // EXIBIÇÃO DO HORÁRIO HH:MM 
+    
+    hora1 = rtc.getTimeStr(FORMAT_SHORT);
+    tft.setCursor(163,290);
+    tft.print(hora1);
+    tft.print(F("h"));
 
 }
